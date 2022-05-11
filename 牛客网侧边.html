@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .fixed-menu {
+        position: fixed;
+        z-index: 999;
+        right: 10px;
+        bottom: 120px;
+        zoom: 1;
+    }
+
+    ol,
+    ul {
+        list-style: none;
+    }
+
+    li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+
+    .fixed-menu li {
+        margin-bottom: 5px;
+        position: relative;
+        zoom: 1;
+    }
+
+    .fixed-menu li:after,
+    .fixed-menu li:before {
+        clear: both;
+        content: ".";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+
+    .fixed-menu li a {
+        float: left;
+        width: 35px;
+        height: 35px;
+        line-height: 16px;
+        border-radius: 3px;
+        border: 1px solid #d6d6d6;
+        background: #fff url(https://static.nowcoder.com/fe/style/images/common/img/common/ico-fixed-menu2.png) no-repeat;
+    }
+
+    a:link,
+    a:visited {
+        text-decoration: none;
+    }
+
+    a {
+        color: #333;
+    }
+
+    a:hover {
+        color: #25bb9b;
+    }
+
+    .fixed-menu li a,
+    .fixed-menu li a.gotop {
+        background-position: 8px -225px;
+    }
+
+    .fixed-menu li:after,
+    .fixed-menu li:before {
+        clear: both;
+        content: ".";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+
+    .fixed-menu li a.fixed-wb {
+        background-position: 8px -262px;
+    }
+
+    .fixed-menu li a.qq {
+        background-position: 8px -303px;
+    }
+
+    .fixed-menu li a.wx {
+        background-position: 8px -343px;
+    }
+
+    .fixed-menu li a.feedback {
+        background-position: 8px -382px;
+    }
+
+    .fixed-menu li a.qrcode {
+        background-position: 8px -422px;
+    }
+
+    .fixed-menu li .wx-qrcode {
+        height: 178px;
+        width: 158px;
+        background: url(https://static.nowcoder.com/images/img/fixed-menu.png) no-repeat;
+        position: absolute;
+        left: -190px;
+        top: -160px;
+        padding: 16px;
+        display: none;
+    }
+
+    .fixed-menu li a:hover.gotop {
+        background-position: 8px 10px;
+    }
+
+    .fixed-menu li a:hover.fixed-wb {
+        background-position: 8px -28px;
+    }
+
+    .fixed-menu li a:hover.qq {
+        background-position: 8px -68px;
+    }
+
+    .fixed-menu li a:hover.wx {
+        background-position: 8px -108px;
+    }
+
+    .fixed-menu li a:hover.feedback {
+        background-position: 8px -148px;
+    }
+
+    .fixed-menu li a.feedback-letter,
+    .fixed-menu li a.wx-letter {
+        display: none;
+    }
+
+    .fixed-menu li a:hover {
+        background-color: #1abc9c;
+        border-color: #1abc9c;
+    }
+
+    .fixed-menu li a:hover.qrcode {
+        background-position: 8px -188px;
+    }
+</style>
+
+<body>
+    <div class="fixed-menu" style="bottom: 242.5px;">
+        <ul>
+            <li>
+                <a href="javascript:void(0);" class="gotop js-nav-go-top" title="回到顶部"></a>
+            </li>
+            <li>
+                <a class="fixed-wb" target="_blank" href="http://www.weibo.com/nowcoder"></a>
+            </li>
+            <li>
+                <a href="tencent://groupwpa/?subcmd=all&amp;param=7B2267726F757055696E223A3135373539343730352C2274696D655374616D70223A313431333130373737387D0A"
+                    class="qq" title="QQ"></a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0);" class="wx"></a>
+                <div class="wx-qrcode">
+                    <img src="//static.nowcoder.com/images/wx-rcode.jpg" alt="二维码">
+                    <p>扫描二维码，关注牛客网</p>
+                </div>
+            </li>
+            <li>
+                <a href="https://www.nowcoder.com/subject/index/b211632d69fd42f7b55aae38d4242fda" class="feedback"
+                    title="意见反馈"></a>
+                <a href="https://www.nowcoder.com/subject/index/b211632d69fd42f7b55aae38d4242fda"
+                    class="feedback-letter">意见反馈</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="qrcode"></a>
+                <div class="wx-qrcode">
+                    <img src="//uploadfiles.nowcoder.com/app/android/app.png" alt="二维码">
+                    <p>下载牛客APP，随时随地刷题</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

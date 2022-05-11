@@ -1,0 +1,225 @@
+
+/* 导航条开始  */
+
+
+.fuild-container-navbar{
+	background-color: #F5F5F5;
+	box-shadow: 0 1px 1px #eee;
+	-webkit-box-shadow: 0 1px 1px #eee;
+	-ms-box-shadow: 0 1px 1px #eee;
+	-moz-box-shadow: 0 1px 1px #eee;
+	-o-box-shadow: 0 1px 1px #eee;
+	height: 30px;
+}
+
+.nav-left{
+	height: 30px;
+	width: 300px;
+	float: left;
+}
+
+
+.nav-left>li:nth-of-type(2) a{
+   color: #F22E00;
+}
+
+.nav-left>li:nth-of-type(1){
+	text-align: left;
+}
+
+
+
+.nav-item-hover:hover{
+   background-color: white;
+}
+
+.nav-left>li:nth-of-type(1) a,.nav-left>li:nth-of-type(1) a:hover{
+   color: #323232;
+   margin-left: 5px;
+}
+
+
+
+.nav-right{
+	width: 700px;
+	height: 30px;
+	float: right;
+}
+
+
+
+.nav-left>li a,.nav-right>li a{
+	text-decoration: none;
+	color: #6C6C6C;
+}
+
+.nav-left>li a:hover,.nav-right>li a:hover{
+   color: #F22E00;
+}
+
+
+.nav-left>li ,.nav-right>li{
+	height: 100%;
+	line-height:30px;
+	text-align: center;
+	float: left;
+}
+
+.nav-left>li{
+	width: calc(100% / 4);
+}
+
+.nav-right>li{
+	width: calc(100% / 8.2);
+}
+
+.nav-right>li:nth-of-type(6){
+	width: calc(100% / 7);
+}
+
+
+
+.nav-right>li:nth-of-type(5) a:after{
+	content: "|";
+	margin-left: 10px;
+	color: #ddd;
+}
+
+.down{
+	margin-left: 5px;
+}
+
+.nav-icon2{
+	margin-right: 5px;
+}
+
+.nav-right>li:nth-of-type(2) i:first-child {
+ 	color: #F22E00;
+}
+
+
+
+/* 导航条下拉菜单样式开始  */
+
+.container-navbar{
+	background-color: #F5F5F5;
+	/*overflow: visible;*/
+	/*height: 30px;*/
+}
+
+
+.item-hover-dropdown{
+	border: 1px solid #eee;
+	border-top: none;
+}
+
+.nav-left .nav-item-hover {
+	position: relative;
+	z-index: 999;
+}
+
+.nav-left .nav-item-hover .item-hover-dropdown{
+	width: 250px;
+	height: 280px;
+	background-color: white;
+	left: 0;
+	top: 30px;
+	position: absolute;
+	overflow-y: scroll;
+	display: none;
+}
+
+.nav-left .nav-item-hover .item-hover-dropdown>li{
+	height: 30px;
+	width: 240px
+	line-height: 30px;
+	padding-left: 10px;
+	background-color: white;
+	cursor: pointer;
+}
+
+.nav-left .nav-item-hover .item-hover-dropdown>li:hover{
+	 background-color: #F5F5F5;
+}
+
+.nav-left .nav-item-hover:hover>.item-hover-dropdown{
+	 display: block;
+} 
+
+
+.nav-right .nav-item-hover .item-hover-dropdown{
+	 width: 100px;
+	 height: auto;
+	 background-color: white;
+	 display: none;
+	 /* 设置定位  */
+	 position: relative;
+	 z-index: 999;
+}
+
+.nav-right .nav-item-hover .item-hover-dropdown>li{
+	 width: 100px;
+	 height: 30px;
+	 cursor: pointer;
+	 color: #6C6C6C;;
+}
+
+.nav-right .nav-item-hover>.item-hover-dropdown>li:hover{
+	background-color: #eee;
+}
+
+.nav-right .nav-item-hover:hover>.item-hover-dropdown{
+	display: block;
+}
+
+.nav-right .nav-item-hover:last-child{
+	  position: relative;
+}
+
+.nav-right .nav-item-hover ul.site-nav{
+	/* 因为加了边框 需要减少2px  */
+	width: 1198px;
+	height: 300px;
+	left: -1112px;
+	position: absolute;
+	background-color: white;
+}
+
+.nav-right .nav-item-hover ul.site-nav>li{
+	width: calc((1198px / 4) - 1px);
+	height: 100%;
+	float: left;
+	background-color: white;
+	border-left: 1px solid #eee;
+}
+
+.nav-right .nav-item-hover ul.site-nav>li:first-child{
+	border-left: none;
+}
+
+.nav-right .nav-item-hover ul.site-nav>li:hover{
+	background-color: white;
+}
+
+.nav-right .nav-item-hover ul.site-nav>li>h3{
+	text-align: left;
+	padding-left: 10px;
+}
+
+.nav-right .nav-item-hover ul.site-nav>li .site-nav-item>li{
+  float: left;
+}
+
+.nav-right .nav-item-hover ul.site-nav>li .site-nav-item>li>a{
+	 padding: 5px;
+}
+
+.nav-right .nav-item-hover ul.site-nav>li:nth-of-type(1) .site-nav-item>li>a:hover{
+	 color: white;
+	 background-color: #fc4200;
+}
+
+
+/* 导航条下拉菜单样式结束  */
+
+/* 导航条结束  */

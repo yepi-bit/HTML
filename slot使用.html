@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<body>
+    <div id="app">
+        <popo>我是组件popo中的原内容</popo>
+        <son>
+            <template #hh>1</template>
+        </son>
+    </div>
+    <template id='item'>
+        <div>
+            <h3>我是组件popo</h3>
+            <!-- 显示组件popo中的内容 -->
+            <slot>如果没有原内容，则显示该内容</slot>
+        </div>
+    </template>
+    <template id='h1'>
+        <div>
+            <h3>我是组件son</h3>
+            <!-- 显示组件popo中的内容 -->
+            <slot name='hh'>如果没有原内容，则显示该内容</slot>
+        </div>
+    </template>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            components: {
+                'popo': {
+                    template: '#item'
+                },
+                'son': {
+                    template:'#h1'
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

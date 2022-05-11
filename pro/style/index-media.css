@@ -1,0 +1,26 @@
+@media screen and (max-width:768px){
+     
+    .header-logo,.header-search{
+        text-align: center;
+    }
+ 
+     
+.myshop h2, .myshop p,.goods{
+    padding-left: 10px;
+}
+ 
+}
+ 
+@media screen and (max-width:960px){
+     
+    .header-logo img{
+        top: calc(50% - (35px / 2));
+    }
+ 
+    .banner-list-text{
+        margin-top:50px;
+        text-align: center;
+        margin-bottom:20px;
+    }
+ 
+}

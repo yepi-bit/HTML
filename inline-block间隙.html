@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>去除inline-block元素间距</title>
+  <style>
+    .div1 {
+      /*方法2*/
+      font-size: 0;
+
+      /*方法3*/
+      /* letter-spacing: -5px; */
+
+      /*方法4*/
+      /* word-spacing: -5px; */
+    }
+
+    a{
+      display: inline-block;
+      border: 1px dotted  red;
+      width: 30px;
+      height: 20px;
+      font-size: 15px;
+
+      /*方法5*/
+      /* margin: -3px; */
+    }
+  </style>
+</head>
+<body>
+<div class="div1">
+  <a>a</a>
+  <a>b</a>
+  <a>c</a>
+
+<!-- 方法1：去除标签之间的空格和换行 -->
+<!--  <a>a</a><a>b</a><a>c</a>-->
+</div>
+
+</body>
+</html>

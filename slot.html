@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<body>
+    <div id="app">
+        <son><h2>我是子组件h2</h2></son>
+        <son><span>我是子组件span</span></son>
+        <son #slot="name"><h3>我是子组件h3</h3></son>
+    </div>
+
+    <template id="item">
+        <div>
+            <slot>11</slot>
+        </div>
+    </template>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            components: {
+                son: {
+                    template: '#item'
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

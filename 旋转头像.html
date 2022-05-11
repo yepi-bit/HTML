@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .profile-avatar img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+    }
+
+    .profile-avatar img:hover {
+        transform: rotate(1turn);
+    }
+
+    .profile-avatar img {
+        transition: transform .8s cubic-bezier(1, 0.15, 0.55, 1.55);
+    }
+
+    a {
+        color: inherit;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="profile-avatar">
+        <a href="#">
+            <img src="https://img1.baidu.com/it/u=236678803,3571262236&fm=26&fmt=auto" alt="">
+        </a>
+        <!-- <a href="javascript:void(8)">11</a> -->
+
+    </div>
+</body>
+
+</html>

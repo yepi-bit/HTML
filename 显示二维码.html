@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            margin-top: 200px;
+            margin-left: 200px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .weixin {
+            position: relative;
+        }
+
+        .weixin img.qrcode {
+            position: absolute;
+            z-index: 99;
+            top: -200px;
+            right: -40px;
+            width: 7.5rem;
+            max-width: none;
+            height: 7.5rem;
+            transform: scale(0);
+            transform-origin: top right;
+            opacity: 0;
+            border: .3125rem solid #0085ba;
+            border-radius: .25rem;
+            -webkit-transition: all .4s ease-in-out;
+            -o-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+
+        }
+
+        .weixin:hover img.qrcode {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a class="weixin" href="http://www.baidu.com">
+            <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftupian.qqjay.com%2Fu%2F2016%2F0919%2F1_171052_3.jpg&refer=http%3A%2F%2Ftupian.qqjay.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1654688474&t=15f6570e7b914f37a2405f64b69d4d52"
+                alt="微信二维码">
+            <img class="qrcode"
+                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftupian.qqjay.com%2Fu%2F2016%2F0919%2F1_171052_3.jpg&refer=http%3A%2F%2Ftupian.qqjay.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1654688474&t=15f6570e7b914f37a2405f64b69d4d52"
+                alt="">
+        </a>
+    </div>
+    <div><button onclick="deSpeak()">播放</button></div>
+</body>
+<script>
+    function deSpeak() {
+        let speakText = '红红火火恍恍惚惚哈哈哈哈哈哈哈哈哈哈哈哈哈';
+        const utterThis = new window.SpeechSynthesisUtterance(speakText);
+        window.speechSynthesis.speak(utterThis);
+    }
+</script>
+
+</html>

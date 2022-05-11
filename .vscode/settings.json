@@ -1,0 +1,6 @@
+{
+    // "npm.exclude": ""
+    "less.compile": {
+        "out": "${workspaceRoot}\\css\\",
+    }
+}

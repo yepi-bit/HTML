@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+
+    body {
+        height: 100vh;
+        background: url(../img/bj.jpg) top left no-repeat;
+        background-size: 100% 100%;
+        overflow: hidden;
+    }
+
+    .box {
+        width: 100%;
+        height: 100%;
+    }
+
+    .box li {
+        position: absolute;
+        animation: all 3s linear;
+        top: -100px;
+        animation: redRun 40s;
+    }
+
+    @keyframes redRun {
+        0% {
+            top: -8%;
+        }
+
+        100% {
+            top: 110%;
+        }
+    }
+
+    .popwin {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2) url(../img/gx.png) center 16% no-repeat;
+        background-size: 300px;
+        z-index: 2;
+        left: 0;
+        top: 0;
+        padding-top: 400px;
+        text-align: center;
+        font-size: 24px;
+        color: red;
+    }
+
+    /* .popwin button {
+        background: chocolate;
+        color: #fff;
+        padding: 10px 30px;
+        border: 0;
+        font-size: 16px;
+        margin-top: 30px;
+        border-radius: 5px;
+    } */
+    .popwin img {
+        margin: 30px;
+        width: 34px;
+        height: 34px;
+        color: rgba(255, 255, 255, 0.2);
+    }
+
+    .countdown {
+        width: 100%;
+        backdrop-filter: blur(6px);
+        background: rgba(255, 255, 255, 0.2);
+        height: 100%;
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .countdown span {
+        color: #6e231c;
+        font-weight: bold;
+        font-size: 160px;
+        margin: auto;
+    }
+</style>
+
+<body>
+    <!-- 红包区域 -->
+    <ul class="box" id="boxBag">
+        <!-- <li>
+            <img src="../img/bj.jpg">
+        </li> -->
+    </ul>
+    <!-- 获奖弹框 -->
+    <div class="popwin" id="popwin" style="display: none;">
+        <h3>获得红包<em></em>元</h3>
+        <!-- <button type="button">确定</button> -->
+        <img src="../img//close.png">
+    </div>
+    <!-- 开抢倒计时 -->
+    <div class="countdown" id="countDom">
+        <span>3</span>
+    </div>
+    
+</body>
+<script>
+    //开始倒计时
+    var countDom = document.getElementById('countDom');
+    var times = 3;
+    var backword = function () {
+        times--;
+        if (times >= 0) {
+            countDom.querySelector('span').innerText = times;
+            setTimeout(backword, 1000);
+
+        } else {
+            //添加红包
+            addRedPacket();
+            //删除倒计时区域
+            countDom.remove();
+        }
+    }
+
+    setTimeout(backword, 1000);
+
+    // 增加红包
+    function addRedPacket() {
+        var liDom = document.createElement('li');
+        // 哪个红包图片  
+        var hb = Math.ceil(Math.random() * 2);     // 0 - 2   -   >  1- 2   hb_1  hb_2
+
+        // 红包大小   20-60
+        var Wh = Math.random() * 40 + 20;     // 0 -40  ---- > 20-- 60
+
+        //红包的位置  0%  - 100%  
+        var Left = Math.random() * 100 + '%';
+
+        // 旋转角度  - 45deg -    45deg
+        var rot = (Math.random() * 90 - 45);    // 0--90  -> -45 - 45
+        // 红包金额  0 -100 
+        var money = parseInt(Math.random() * 100);
+        liDom.setAttribute('data-money', money);
+        console.log(money);
+        liDom.innerHTML = '<img src="../img/hb_' + hb + '.png">';
+        liDom.style.cssText = `width:${Wh}px;left:${Left};transform:rotate(${rot}deg)`;  //es6模板字符串
+
+        document.getElementById('boxBag').appendChild(liDom);
+
+        setTimeout(addRedPacket, 300);
+        //删除已经不在屏幕显示区的红包
+        setTimeout(function () {
+            liDom.remove();
+        }, 8000);
+
+        //点击红包到红包时 弹出模态框
+        liDom.addEventListener('click', function (ev) {
+            var money = ev.target.parentElement.dataset.money;
+
+            popwin.querySelector('em').innerText = money;
+            popwin.style.display = 'block';
+
+        })
+
+    }
+
+    //点击确认关闭模态框
+    popwin.querySelector('img').onclick = function () {
+        popwin.style.display = 'none';
+    }
+
+</script>
+
+</html>

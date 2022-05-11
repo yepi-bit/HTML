@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Emoji.css" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="model" v-show="model" @click="model = false">
+            <div class="model-show">
+                <img :src="modelSrc" alt="">
+                <div :style="textStyle">{{ option.inputText }}</div>
+            </div>
+        </div>
+        <h1>demo</h1>
+        <div class="view">
+            <div class="cut">
+                <vue-cropper 
+                ref="cropper" 
+                :img="option.img" 
+                :output-size="option.size" 
+                :output-type="option.outputType"
+                :info="true" 
+                :full="option.full" 
+                :fixed="fixed" 
+                :fixed-number="fixedNumber"
+                :can-move="option.canMove" 
+                :can-move-box="option.canMoveBox" 
+                :fixed-box="option.fixedBox"
+                :original="option.original" 
+                :auto-crop="option.autoCrop" 
+                :auto-crop-width="option.autoCropWidth"
+                :auto-crop-height="option.autoCropHeight"
+                :center-box="option.centerBox" 
+                @real-time="realTime"
+                :high="option.high" 
+                @img-load="imgLoad" 
+                mode="contain" 
+                :max-img-size="option.max"
+                @crop-moving="cropMoving" 
+                >
+            </vue-cropper>
+                <div :style="{'background-color':'darkorange'}">
+                    <div :style="textStyle">{{ option.inputText }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="cut_preview">
+            <p>两倍大小</p>
+            <div class="show-preview"
+                :style="{'width': previews.w*2 + 'px', 'height': previews.h*2 + 'px',  'overflow': 'hidden', 'margin': '5px'}">
+                <div :style="previews.div">
+                    <img :src="previews.url" :style="previews.img">
+                </div>
+            </div>
+            <p>截图框大小</p>
+            <div class="show-preview"
+                :style="{'width': previews.w + 'px', 'height': previews.h + 'px',  'overflow': 'hidden', 'margin': '5px'}">
+                <div :style="previews.div">
+                    <img :src="previews.url" :style="previews.img">
+                </div>
+            </div>
+            <p>缩放两倍大小</p>
+            <div class="show-preview"
+                :style="{'width': previews.w/2 + 'px', 'height': previews.h/2 + 'px',  'overflow': 'hidden', 'margin': '5px'}">
+                <div :style="previews.div">
+                    <img :src="previews.url" :style="previews.img">
+                </div>
+            </div>
+            <p>mini大小</p>
+            <div class="show-preview"
+            :style="{'width': previews.w/4 + 'px', 'height': previews.h/4 + 'px',  'overflow': 'hidden', 'margin': '5px'}">
+            <div :style="previews.div">
+                <img :src="previews.url" :style="previews.img">
+            </div>
+        </div>
+        </div>
+        <div class="test-button">
+            <button @click="changeImg" class="btn">改变图片</button>
+            <label class="btn" for="uploads">下载</label>
+            <input type="file" id="uploads" style="position:absolute; clip:rect(0 0 0 0);"
+                accept="image/png, image/jpeg, image/gif, image/jpg" @change="uploadImg($event, 1)">
+            <button @click="startCrop" v-show="!crap" class="btn">开始</button>
+            <button @click="stopCrop" v-show="crap" class="btn">停止</button>
+            <button @click="clearCrop" class="btn">清除</button>
+            <button @click="refreshCrop" class="btn">刷新</button>
+            <button @click="changeScale(1)" class="btn">放大</button>
+            <button @click="changeScale(-1)" class="btn">缩小</button>
+            <button @click="rotateLeft" class="btn">左90°</button>
+            <button @click="rotateRight" class="btn">右90°</button>
+            <button @click="finish('base64')" class="btn">预览(base64)</button>
+            <button @click="finish('blob')" class="btn">预览(blob)</button>
+            <a @click="down('base64')" class="btn">下载(base64)</a>
+            <a @click="down('blob')" class="btn">下载(blob)</a>
+            <a @click="() => option.img = ''" class="btn">清除图片</a>
+            <div ref="formRef" :model="option" style="display:inline; width: 100%;">
+                <label class="c-item">
+                    <span>添加文字</span>
+                    <input v-model="option.inputText" />
+                </label>
+                <label class="c-item">
+                    <span>上传图片是否显示原始宽高 (针对大图 可以铺满)</span>
+                    <input type="checkbox" v-model="option.original">
+                    <span>original: {{ option.original}}</span>
+                </label>
+                <label class="c-item" name="background">
+                    <span>背景色</span>
+                    <!-- <popu-color-picker v-model:color="option.background" mode="fk"/> -->
+                    <el-color-picker v-model="option.colors"></el-color-picker>
+                    <span>background: {{ option.colors}}</span>
+                </label>
+                <label class="c-item">
+                    <span>拖动图片</span>
+                    <input type="checkbox" v-model="option.canMove">
+                </label>
+                <label class="c-item">
+                    <span>拖动截图框</span>
+                    <input type="checkbox" v-model="option.canMoveBox">
+                    <span>canMoveBox: {{ option.canMoveBox}}</span>
+                </label>
+                <label class="c-item">
+                    <span>截图框固定大小</span>
+                    <input type="checkbox" v-model="option.fixedBox">
+                    <span>fixedBox: {{ option.fixedBox}}</span>
+                </label>
+                <label class="c-item">
+                    <span>输出原图比例的截图</span>
+                    <input type="checkbox" v-model="option.full">
+                    <span>full: {{ option.full}}</span>
+                </label>
+                <label class="c-item">
+                    <span>自动生成截图框</span>
+                    <input type="checkbox" v-model="option.autoCrop">
+                    <span>autoCrop: {{ option.autoCrop}}</span>
+                </label>
+                <label class="c-item">
+                    <span>根据dpr生成适合屏幕的高清图片</span>
+                    <input type="checkbox" v-model="option.high">
+                    <span>high: {{ option.high}}</span>
+                </label>
+                <label class="c-item">
+                    <span>截图框是否限制在图片里(只有在自动生成截图框时才能生效)</span>
+                    <input type="checkbox" v-model="option.centerBox">
+                    <span>centerBox: {{ option.centerBox}}</span>
+                </label>
+                <label class="c-item">
+                    <p>输出图片格式</p>
+                    <label>jpg
+                        <input type="radio" name="type" value="jpeg" v-model="option.outputType">
+                    </label>
+                    <label>png
+                        <input type="radio" name="type" value="png" v-model="option.outputType">
+                    </label>
+                    <label>webp
+                        <input type="radio" name="type" value="webp" v-model="option.outputType">
+                    </label>
+                </label>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- <script src="https://vuejs.org/js/vue.min.js"></script> -->
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-cropper@0.5.5/dist/index.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="./Emoji.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue3-colorpicker@1.0.8/vue3-colorpicker.es.min.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cpn ref="child1"></cpn>
+        <cpn ref="child2"></cpn>
+        
+        <!-- 这个子组件实例没有 ref 属性，通过 this.$refs 方式拿不到这个组件实例 -->
+        <cpn></cpn>
+        <button @click="btnClick">按钮</button>
+      </div>
+      
+      <template id="cpn">
+        <div>
+          <h1>我是子组件</h1>
+        </div>
+      </template>
+      
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+        let vm = new Vue({
+          el: "#app",
+          data: {
+            message: "hello"
+          },
+          methods: {
+            btnClick() {
+              console.log(this.$refs);
+              console.log(this.$refs.child1);
+              console.log(this.$refs.child1.name);
+              this.$refs.child1.showMessage();
+            }
+          },
+          components: {
+            cpn: {
+              template: '#cpn',
+              data() {
+                return {
+                  name: 'web'
+                }
+              },
+              methods: {
+                showMessage() {
+                  console.log('我是子组件');
+                }
+              }
+            }
+          }
+        });
+      </script>
+
+</body>
+</html>

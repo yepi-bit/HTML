@@ -1,0 +1,46 @@
+
+/* Footer 区域  */
+
+.footer{
+	background: white;
+	margin-top: 20px;
+	height: auto;
+	padding: 10px 0 20px 0;
+}
+
+
+.footer p{
+	margin-top: 5px;
+	border-bottom: 1px solid #eee;
+	line-height: 27px;
+}
+
+
+
+.footer p a{
+	text-decoration: none;
+	    color: #6c6c6c;
+	    margin: 0 2px 0 0;
+}
+
+.footer p a:hover{
+	    color: #f22e00;
+}
+
+.footer p b{
+		    color: #6c6c6c;
+		    font-weight: 100;
+}
+
+
+.footer div.footer-other{
+	overflow: hidden;
+}
+
+.footer div.footer-other p{
+	border-bottom: none;
+}
+
+
+
+/* Footer 结束  */

@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+.isIeShow{
+	display: block;
+}
+.isW3cShow{
+	display: none;
+}
+
+.main-top-search .top-search-wapper .top-search .search-right button,
+.main .fixed-nav ul li:hover,
+.main .fixed-nav ul li.current,
+.main-bottom-loves>ul.bottom-loves-list li .loves-list-similar span
+
+{
+	/* 兼容IE9渐变  设置了Filter之后 border-radius会失效 （真气人） */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9000',endColorstr='#ff5000',GradientType=1);
+}
+
+.main .fixed-nav ul{
+	border-radius: 10px 10px 0 0;
+	overflow: hidden;
+}
+

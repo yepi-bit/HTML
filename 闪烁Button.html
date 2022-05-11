@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编译中梦见未来</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+    }
+
+    a {
+        position: relative;
+        padding: 12px 40px;
+        border-radius: 30px;
+        font-size: 30px;
+        color: #FFF;
+        text-decoration: none;
+        /* 使用linear-gradient生成一个线性渐变的“背景图” */
+        background-image: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+        /* 放大背景图 */
+        background-size: 400%;
+        /* 这里是为了让a标签的背景显示在a::before的下面 */
+        z-index: 1;
+    }
+
+    a:hover {
+        animation: show 8s linear infinite;
+    }
+
+    @keyframes show {
+        0% {
+            background-position: 0%;
+        }
+
+        100% {
+            background-position: 400%;
+        }
+    }
+
+    /* 创建背景炫光效果 */
+    a::before {
+        position: absolute;
+        content: "";
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        /* 使用linear-gradient生成一个线性渐变的“背景图” */
+        background-image: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+        /* 放大背景图 */
+        background-size: 400%;
+        border-radius: 40px;
+        z-index: -1;
+        filter: blur(20px);
+        opacity: 0;
+    }
+
+    a:hover::before {
+        opacity: 1;
+        animation: show 8s linear infinite;
+    }
+</style>
+
+<body>
+    <a href="#">Button</a>
+</body>
+
+</html>

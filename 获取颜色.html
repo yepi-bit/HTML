@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css" />
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
+<style>
+    #bg-animation {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        background-color: orange !important;
+        transition: all 1s linear;
+        overflow: hidden;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    /* #bg-animation::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("https://img3.mukewang.com/61833b8600017a4a17920764.jpg");
+        background-size: cover;
+        filter: blur(50px);
+        transform: scale(3);
+    } */
+</style>
+
+<body>
+    <div id="app">
+        <div id="bg-animation">
+            <van-search v-model="search" shape="round" placeholder="请输入关键词">
+            </van-search>
+            <div class="banner-bg">
+            </div>
+        </div>
+        <!--     轮播-->
+        <div class="swiper-box" style="text-align: center;margin-top: -80px;">
+            <van-swipe :autoplay="1500">
+                <van-swipe-item v-for="item in bannerList" :key="item.id">
+                    <img :src="item" width="90%" style="border-radius: 12px;">
+                </van-swipe-item>
+            </van-swipe>
+        </div>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                bannerList: [
+                    src = "/img/picture1.jpg",
+                    src = "/img/picture2.jpg",
+                    src = "/img/picture3.jpg",
+                    src = "/img/picture4.jpg"
+                    // 'https://img2.mukewang.com/617b8e6e0001200b17920764.jpg',
+                    // 'https://img4.mukewang.com/617f49e30001ad2b17920764.jpg',
+                    // 'https://img3.mukewang.com/61833b8600017a4a17920764.jpg',
+                ],
+                search: '',
+            },
+            methods: {
+            },
+            mounted() {
+                function bgFun() {
+                    var bg = document.getElementById("bg-animation");
+                    var allItems = document.getElementsByTagName("img");
+                    for (var i = 0; i < allItems.length; i++) {
+                        var num = allItems[i].index = i + 1;
+                            allItems[i].onclick = function () {
+                            bg.style.backgroundImage = `url("/img/picture${this.index}.jpg")`
+                        }
+                    }
+                }
+                setTimeout(() => {
+                    bgFun()
+                })
+
+            }
+
+        });
+
+        // 通过 CDN 引入时不会自动注册 Lazyload 组件
+        // 可以通过下面的方式手动注册
+        Vue.use(vant.Lazyload);
+    </script>
+</body>
+
+</html>

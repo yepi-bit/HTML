@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<body>
+    <div id="app">
+        <div ref="listScroll" class="scrolledList">
+            <ul ref="scrolledHeight">
+                <li v-for="month in months">
+                    {{month}}
+                </li>
+            </ul>
+        </div>
+
+        <input type="text" placeholder="Add Month" v-model="month">
+        <button @click="addMessage" @keyup.enter="addMessage"> Add Month</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                month: '',
+                months: ['Jan', 'Feb', 'Apr', 'May', 'June', 'July', 'Aug']
+            },
+            mounted() {
+                this.updateScrollNextTick()
+            },
+            methods: {
+                addMessage() {
+                    if (this.month == '') {
+                        return
+                    }
+
+                    this.months.push(this.month)
+                    this.month = ''
+                    this.updateScrollNextTick()
+                },
+                updateScrollNextTick() {
+                    let scrolledHeight = this.$refs.scrolledHeight.clientHeight
+
+                    this.$nextTick(() => {
+                        this.$refs.listScroll.scrollTo({
+                            behavior: 'smooth',
+                            top: scrolledHeight
+                        })
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

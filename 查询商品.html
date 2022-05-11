@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        input {
+            width: 50px;
+        }
+
+        .search {
+            width: 600px;
+            margin: 20px auto;
+        }
+
+        .total {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .totalCom {
+            margin-left: 10px;
+            padding: 2px 20px 2px 20px;
+        }
+
+        totalPrice {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询: <input type="text" class="start"> - <input type="text" class="end"> <button
+            class="search-price">搜索</button>
+        按照商品名称查询: <input type="text" class="product"> <button class="search-pro">查询</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格
+                    <button class="sorted">上升</button>
+                    <button class="NoSorted">下降</button>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <div class="total">
+        按照ID计算价格: <input type="text" class="idFirst"> + <input type="text" class="idSecond"> <button
+            class="totalCom">=</button>
+        <totalPrice>
+            总价：0
+        </totalPrice>
+    </div>
+    <h1>
+    </h1>
+    <p id="p1" style="font-size: 28px; font-weight: 600;">❀欢迎您:王者大帝☺</p>
+    <div class="text" style="font-size: 28px; font-weight: 600;"></div>
+
+    <script>
+        // 利用新增数组方法操作数据
+        var data = [{
+            id: 1,
+            pname: '小米',
+            price: 3999
+        }, {
+            id: 2,
+            pname: 'oppo',
+            price: 1999
+        }, {
+            id: 3,
+            pname: '一加',
+            price: 2999
+        }, {
+            id: 4,
+            pname: '荣耀',
+            price: 2399
+        }, {
+            id: 5,
+            pname: '华为',
+            price: 3999
+        }, {
+            id: 6,
+            pname: 'vivo',
+            price: 2699
+        },];
+        // 1. 获取相应的元素
+        var tbody = document.querySelector('tbody');
+        var search_price = document.querySelector('.search-price');
+        var start = document.querySelector('.start');
+        var end = document.querySelector('.end');
+        var product = document.querySelector('.product');
+        var search_pro = document.querySelector('.search-pro');
+        var sorted = document.querySelector('.sorted');
+        var NoSorted = document.querySelector('.NoSorted');
+        var idFirst = document.querySelector('.idFirst');
+        var idSecond = document.querySelector('.idSecond');
+        var totalCom = document.querySelector('.totalCom');
+        var totalPrice = document.querySelector('totalPrice');
+        var h1 = document.querySelector('h1');
+        setDate(data);
+
+        // var p1 = document.getElementById("p1");
+        // var p2 = p1.innerText.split('');
+        // p1.innerText = '';
+        // var i = 0;
+        // var text = setInterval(function () {
+        //     if (i < p2.length) {
+        //         p1.innerText += p2[i];
+        //         i++;
+        //     } else {
+        //         clearInterval(text);
+        //     }
+        // }, 500);
+
+        var text1 = document.getElementsByClassName("text")[0];
+        var i = 0;
+        var str = '❀欢迎您:王者大帝☺'
+        function typing() {
+            if (i <= str.length) {
+                text1.innerHTML = str.substring(0, i++) + "_";
+                var timer = setTimeout(typing, 500);
+            } else {
+                text1.innerHTML = str;
+                clearTimeout(timer);
+            }
+        } 
+        typing(str);
+
+        // 2. 把数据渲染到页面中
+        function setDate(mydata) {
+            // 先清空原来tbody 里面的数据
+            tbody.innerHTML = '';
+            mydata.forEach(function (value) {
+                // console.log(value);
+                var tr = document.createElement('tr');
+                tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td>';
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 3. 根据价格查询商品
+        // 当我们点击了按钮,就可以根据我们的商品价格去筛选数组里面的对象
+        search_price.addEventListener('click', function () {
+            var newDate = data.filter(function (value) {
+                return value.price >= start.value && value.price <= end.value;
+            });
+            console.log(newDate);
+            // 把筛选完之后的对象渲染到页面中
+            setDate(newDate);
+        });
+        // 4. 根据商品名称查找商品
+        // 如果查询数组中唯一的元素, 用some方法更合适,因为它找到这个元素,就不在进行循环,效率更高]
+        search_pro.addEventListener('click', function () {
+            var arr = [];
+            data.some(function (value) {
+                if (value.pname === product.value) {
+                    // console.log(value);
+                    arr.push(value);
+                    return true; // return 后面必须写true  
+                }
+            });
+            // 把拿到的数据渲染到页面中
+            setDate(arr);
+        })
+        NoSorted.addEventListener('click', function () {
+            var sortData = data.sort(function (value, value2) {
+                // console.log(value, value2)
+                return value2.price - value.price
+            })
+            setDate(sortData)
+        })
+        sorted.addEventListener('click', function () {
+            var newSortData = data.sort(function (value, value2) {
+                // console.log(value, value2)
+                return value.price - value2.price
+            })
+            setDate(newSortData)
+        })
+        totalCom.addEventListener('click', function () {
+            var newTotal = data.filter(function (value) {
+                return value.id == idFirst.value || value.id == idSecond.value
+            })
+            var total = newTotal[0].price + newTotal[1].price
+            totalPrice.innerHTML = '总价：' + total
+            setDate(newTotal)
+            idFirst.value = ''
+            idSecond.value = ''
+        })
+    </script>
+</body>
+
+</html>

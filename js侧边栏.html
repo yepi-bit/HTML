@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html {
+        scroll-behavior: smooth
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .item {
+        position: relative;
+        display: flex;
+        margin: 0 auto;
+        width: 60%;
+        font-size: 22px;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+        line-height: 100px;
+    }
+
+    .tab-item {
+        cursor: pointer;
+        line-height: 100px;
+        border-radius: 14px;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .blue {
+        background-color: blue;
+        color: white;
+    }
+
+    .black {
+        background-color: black;
+        color: white;
+    }
+
+    .yellow {
+        background-color: yellow;
+    }
+
+    .tab {
+        display: flex;
+        position: fixed;
+        width: 46px;
+        height: 400;
+        background-color: white;
+        top: 30%;
+        right: 230px;
+        border-radius: 14px;
+        border: 1px solid black;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    .tab .show {
+        border-radius: 14px;
+        background-color: red;
+    }
+
+    .backTop {
+        cursor: pointer;
+        position: fixed;
+        right: 210px;
+        bottom: 60px;
+        display: none;
+        border-radius: 30px;
+        border: 1px solid black;
+        width: 100px;
+        line-height: 40px;
+        color: black;
+        animation: show .1s ease;
+        text-align: center;
+        z-index: 10;
+    }
+
+    .backTop:hover {
+        background: cornflowerblue;
+        color: white;
+    }
+
+    @keyframes show {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>
+
+<body>
+    <div class="backTop">To顶部</div>
+    <div id="list">
+        <div class="item red">
+            技术社区
+        </div>
+        <div class="item blue">
+            学习平台
+        </div>
+        <div class="item black">
+            资源下载
+        </div>
+        <div class="item yellow">
+            摸鱼
+        </div>
+    </div>
+    <div class="tab">
+        <div class="tab-item show">技术</div>
+        <div class="tab-item">学习</div>
+        <div class="tab-item">资源</div>
+        <div class="tab-item">摸鱼</div>
+    </div>
+    <script>
+        var show = ['red', 'blue', 'black', 'yellow']
+        var tab_item = document.querySelectorAll('.tab-item')
+        var item = document.querySelectorAll('.item')
+        var flag = true // 禁止连续点击
+        var backTop = document.querySelectorAll('.backTop')[0]
+        tab_item.forEach((item, index) => {
+            item.addEventListener('click', scrollColor, false) //点击改变界面颜色方法
+            item.index = index
+        });
+        function scrollColor() {
+            if (flag) {
+                flag = false
+                console.log(flag);
+                var way = item[this.index].offsetTop// 根据自定义属性index 获取侧边栏对应的大色块距离浏览器上面的距离
+                var timer = setInterval(() => {
+                    scrollTo(0, way) // html css设置 scroll-behavior: smooth 或者封装动画类 参考文章 https://blog.csdn.net/weixin_43625763/article/details/103478291
+                    for (var i = 0; i < item.length; i++) {
+                        if (way == innerHeight * i) { //  bug 当这两个值相等 清除定时器 此处需优化 似乎还存在点击 但效果还好
+                            clearInterval(timer)
+                            flag = true
+                        }
+                    }
+                }, 0);
+            }
+        }
+        document.onscroll = function () {
+            for (var i = 0; i < tab_item.length; i++) {
+                if (scrollY > innerHeight * i - 20) {  // -20设置的稍微提前点 因为最后一次无法触底
+                    for (var j = 0; j < tab_item.length; j++) {   // 排他思想
+                        tab_item[j].style.backgroundColor = 'white'
+                        tab_item[j].style.color = 'black'
+                    }
+                    tab_item[i].style.backgroundColor = show[i]
+                    if (i === 1 || i === 2) { // 单独处理黑色块
+                        tab_item[i].style.color = 'white'
+                    }
+                }
+            }
+            if (scrollY > innerHeight) { // 按钮在滑动超过第二个色块出现
+                backTop.style.display = 'block'
+            } else {
+                backTop.style.display = 'none'
+            }
+        }
+        backTop.addEventListener('click', function () {
+            if (flag) {
+                flag = false
+                scrollTo(0, 0)
+                if (scrollY === 0) {
+                    return true
+                }
+            }
+        })
+    </script>
+</body>
+<html>

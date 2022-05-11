@@ -1,0 +1,25 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+
+
+.mask{
+	width: 100%;
+	height: 100%;
+	background: black;
+	filter:alpha(opacity=50);
+	z-index: 1000;
+	position: absolute;
+}
+
+
+.islte9SHow img{
+	position: absolute;
+	left: 650px;
+	top: 200px;
+	z-index: 1001;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 10%;
+        }
+
+        #num {
+            color: rgb(10, 1, 37);
+            font-size: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <span id="num"></span>
+
+    <script>
+        numScroll('num', 10000, 3000)
+        setInterval(function () {
+            numScroll('num', 10000, 3000)
+        }, 5000)
+
+        function numScroll(id, maxNum, time) {
+            var numDom = document.getElementById(id)
+            var numInit = 0
+            var addNum = maxNum / (time / 10) // 33.3
+            var minTime = time / maxNum       // 0.3
+            var t = setInterval(function () {
+                if (numInit >= maxNum) {
+                    clearInterval(t)
+                    numDom.innerText = maxNum
+                } else {
+                    numInit += addNum
+                    numDom.innerText = Math.round(numInit)
+                }
+            }, 2)
+        }
+    </script>
+</body>
+
+</html>

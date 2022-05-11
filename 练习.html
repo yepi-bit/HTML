@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('.clk').click(function(){
+            $('#divTest').slideUp(3000,function(){
+            alert(22)
+        });
+        })
+        // setTimeout(function() {
+        //     alert(1)
+        // }, 2000);
+    })
+    // $(function(){
+    // //     $('#divTest').click(function(){
+    // //     alert($(this).html());
+    // // })
+    // // $('#divTest').css({"color":"red"})
+    // // })
+    // $('#divTest').hide(3000);
+    // setTimeout(function(){
+    //     alert($(this).html())
+    // },2000)
+    // })
+</script>
+
+<body>
+    <div id="divTest" style="width: 200px; height: 200px; border: 1px solid red;">111111</div>
+    <button class="clk" style="position: fixed; left: 100px; top: 202px;">点击我</button>
+</body>
+
+</html>

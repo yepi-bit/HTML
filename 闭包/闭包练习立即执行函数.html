@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <p id="info">123</p>
+    <p>E-mail: <input type="text" id="email" name="email"></p>
+    <p>Name: <input type="text" id="name" name="name"></p>
+    <p>Age: <input type="text" id="age" name="age"></p>
+
+    <script>
+        function showContent(content) {
+            document.getElementById('info').innerHTML = content;
+        };
+        function setContent() {
+            var infoArr = [
+                { 'id': 'email', 'content': 'your email address' },
+                { 'id': 'name', 'content': 'your name' },
+                { 'id': 'age', 'content': 'your age' }
+            ];
+            for (var i = 0; i < infoArr.length; i++) {
+                (function () {
+                    var item = infoArr[i];
+                    document.getElementById(item.id).onfocus = function () {
+                        showContent(item.content)
+                    }
+                })()//放立即执行函数，立即绑定，用每次的值绑定到事件上，而不是循环结束的值
+            }
+        }
+
+        setContent()
+
+    </script>
+</body>
+
+</html>

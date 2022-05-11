@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ViewUI example</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/view-design/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/view-design/dist/iview.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <i-button @click="show">Click me!</i-button>
+            <i-button type="primary">Primary</i-button>
+            <Icon type="ios-alarm" size="100" />
+            <Modal v-model="visible" title="Welcome">Welcome to ViewUI</Modal>
+        </div>
+        <div>
+            <canvas id="drawing" width="200" height="200" style="background-color: blueviolet;"></canvas>
+        </div>
+        
+
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                visible: false
+            },
+            methods: {
+                show: function () {
+                    this.visible = true;
+                }
+            }
+        })
+        let drawing = document.getElementById('drawing')
+        let width = drawing.offsetWidth;
+        console.log(width); // 200
+        // 如果确定支持canvas元素
+        if (drawing.getContext) {
+            let imgURL = drawing.toDataURL('/img/gx.png')
+            let image = document.createElement('img')
+            image.src = imgURL
+            document.body.appendChild(image)
+        }
+    </script>
+</body>
+
+</html>

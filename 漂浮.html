@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+    <title>HTML5标签Canvas画布练习轮子滚动</title>
+
+    <meta charset="UTF-8" />
+
+</head>
+
+<body onload="init();">
+
+    <h1>Canvas 标签实现一个球限定在盒子内随机移动效果</h1>
+
+    <canvas id="myCanvas" width="400" height="400">
+
+        对不起，你的浏览器不支持Canvas标签！
+
+    </canvas>
+    <script type="text/javascript" language="javascript">
+
+        //x和y为球的圆心坐标
+
+        //speed:表示球移动的速度 单位为毫秒
+
+        //radius:为球的半径
+
+        //width和height为盒子大小
+
+        var w, x, y, speed =1500, radius = 50, width = 400, height = 400;
+
+        //初始化
+
+        function init() {
+
+            drawCanvas();
+
+            setInterval(moveWheel, speed);
+
+        }
+
+        //画盒子
+        function drawCanvas() {
+            //创建Canvas对象
+            var c = document.getElementById("myCanvas");
+
+            var ctx = c.getContext("2d");
+
+            //在画布面板上面创建一个矩形
+
+            ctx.fillStyle = "#000000"; //设置填充颜色值           
+
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.fill();
+            w = ctx;
+        }
+        //随机移动球
+
+        function moveWheel() {
+            clearCanvas();
+            drawCanvas();
+
+            //获得随机坐标
+            x = getRandomNum();
+            y = getRandomNum();
+
+            //在画布上渲染一个圆形
+            w.fillStyle = '#FFFFFF';
+
+            w.beginPath();
+
+            w.arc(x, y, radius, 0, Math.PI * 2, true);
+
+            w.closePath();
+
+            w.fill();
+        }
+        //清除画布
+        function clearCanvas() {
+
+            if (typeof w != "undefined") {
+
+                w.clearRect(0, 0, width, height);
+            }
+        }
+        //获取随机数
+
+        function getRandomNum() {
+
+            return Math.random() * (width - radius * 2) + radius;
+        }
+    </script>
+
+</body>
+
+</html>

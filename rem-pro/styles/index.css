@@ -1,0 +1,340 @@
+@import url("./common.css");
+ 
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+ 
+body{
+    width: 15rem;
+    height: auto;
+    font-size:calc(16rem / 50);
+    margin:0 auto;
+    background-color: #f4f4f4;
+}
+ 
+body:last-child{
+    margin-bottom:calc(110rem / 50);
+}
+ 
+.header{
+    display: flex;
+    width: 15rem;
+    height: calc(70rem / 50);
+    background-color: #FF852A;
+}
+ 
+.header .header-logo{
+    width: calc(70rem / 50);
+    height: 100%;
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-size: calc(50rem / 50);
+    background-position:calc(10rem / 50);
+}
+ 
+ 
+.header .header-search{
+    flex-grow:1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.header-search-container{
+    width: 95%;
+    color:white;
+    text-align: center;
+    line-height:calc(50rem / 50);
+    font-size:calc(20rem / 50);
+    height: calc(50rem / 50);
+    border-radius: calc(5rem / 50);
+    background-color:#FF4E22;
+}
+ 
+.banner {
+    width: 15rem;
+    position: relative;
+    height: calc(250rem / 50);
+}
+ 
+.banner img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+ 
+ 
+.list {
+    width: 15rem;
+    height: calc(260rem / 50);
+    overflow-x: scroll;
+    font-size:calc(25rem / 50);
+}
+ 
+.list .list-child{
+    display: flex;
+    width: 30rem;
+    height: 100%;
+    flex-wrap: wrap;
+    background-color: white;
+}
+ 
+ 
+.list .list-child div{
+    width: calc(15rem / 5);
+    height: calc(50% - 2);
+    margin-bottom: 2px;
+}
+ 
+.list .list-child div a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:#666;
+    text-decoration: none;
+}
+ 
+.list .list-child div a img{
+    width: calc(80rem / 50);
+    height: calc(80rem / 50);
+}
+ 
+/* Update */
+ 
+.goods {
+    width: 15rem;
+    height: calc(890rem / 50);
+    padding:calc(15rem / 50);
+    font-size:calc(30rem / 50);
+    display: flex;
+    flex-direction: column;
+}
+ 
+.goods .goods-top{
+    flex:1;
+    display: flex;
+    justify-content: space-between;
+}
+ 
+.goods .goods-top>div{
+    background-color: white;
+    width: calc(50% - 1px);
+    display: flex;
+    flex-direction: column;
+    padding:5px 10px;
+}
+ 
+ 
+.goods .goods-top>div .top-item{
+    flex:1;
+    display: flex;
+}
+ 
+.goods .goods-top>div .top-item .item-child{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+ 
+ 
+.goods .goods-top>div .top-item .item-child>div:first-child{
+     height: calc(50rem / 50);
+     font-weight: bold;
+     color:#666;
+     line-height:  calc(50rem / 50);
+}
+ 
+.goods .goods-top>div .top-item .item-child>div:last-child{
+    flex:1;
+}
+ 
+.goods .goods-top>div .top-item .item-child>div:last-child p{
+    height: calc(50rem / 50);
+    line-height:  calc(50rem / 50);
+    font-size: calc(25rem / 50);
+    font-weight: bold;
+}
+ 
+/* Update */
+.goods .goods-top>div .top-item .item-child img {
+    width: 100%;
+}
+ 
+.red{
+    color:red;
+}
+ 
+.orange{
+    color:orange;
+}
+ 
+.grey {
+    color:#999;
+}
+ 
+.recommend-hd {
+    width: 15rem;
+    /* Update */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+ 
+.recommend-hd img {
+    width: 40%;
+}
+ 
+ 
+.list-two{
+    width: 15rem;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+ 
+.list-two .list-item{
+    width: calc(50% - 10px);
+    height: calc(500rem / 50);
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+ 
+.list-two .list-item:nth-child(odd){
+    /* Update */
+    margin-right: 10px;
+}
+ 
+.list-two .list-item:nth-child(even){
+    /* Update */
+    margin-left: 10px;
+}
+ 
+.list-two .list-item>div:first-child{
+    flex:1;
+}
+.list-two .list-item>div:last-child{
+     height: calc(150rem / 50);
+}
+ 
+.list-two .list-item>div{
+    background-color: white;
+    border-radius: 10px;
+}
+ 
+.list-two .list-item>div p{
+    padding:5px 10px;
+    /* Update */
+    height: 40px;
+    font-size:calc(25rem / 50);
+    overflow: hidden;
+}
+ 
+ 
+.list-two .list-item>div p:last-child small {
+    margin-left: 5px;
+}
+ 
+.list-two .list-item>div img{
+    width: 100%;
+    height: 100%;
+}
+ 
+.goods .goods-bottom{
+    border-top:1px solid #eee;
+    /* update */
+    /* height: calc(80rem / 50); */
+ 
+    width: 100%;
+    display: flex;
+    background-color: white;
+}
+ 
+.goods .goods-bottom .goods-bottom-left{
+    width: calc(170rem/50);
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color:#666;
+    line-height: calc(80rem / 50);
+}
+ 
+.goods .goods-bottom .goods-bottom-right{
+    flex:1;
+    line-height: calc(80rem / 50);
+}
+ 
+ 
+.goods .goods-bottom .goods-bottom-right code{
+    background-color: #feefec;
+    padding:4px 4px;
+    color:#e86217;
+    font-size:calc(26rem / 50);
+}
+ 
+.goods .goods-bottom .goods-bottom-right span{
+    font-size:calc(26rem / 50);
+}
+ 
+.footer{
+    width: 15rem;
+    height: calc(90rem / 50);
+    border-top:1px solid #ddd;
+    position: fixed;
+    bottom:0;
+    /* Update */
+    font-size:calc(25rem / 50);
+    justify-content: center;
+    display: flex;
+    background-color: white;
+}
+ 
+.footer div{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.footer div:hover{
+    background-color: #eee;
+    cursor: pointer;
+}
+ 
+.open-tb{
+    width: calc(240rem / 50);
+    border-radius: 30px;
+    text-align: center;
+    color:white;
+    font-weight: bold;
+    line-height:calc(80rem / 50);
+    height: calc(80rem / 50);
+    font-size: calc(30rem / 50);
+    position: fixed;
+    left: 50%;
+    transform:translate(-50%);
+    box-shadow: 0 5px 3px #999;
+    bottom: calc(120rem / 50);;
+    background-color: #FF4E22;;
+}
+ 
+.top-back{
+    width: calc(90rem / 50);
+    height: calc(90rem / 50);
+    background-color: #eee;
+    color:#333;
+    text-align: center;
+    border-radius: 50%;
+    line-height:calc(90rem / 50);
+    font-size: calc(25rem / 50);
+    border:1px solid #ccc;
+    position: fixed;
+    right: calc(20rem / 50);
+    bottom: calc(190rem / 50);;
+}

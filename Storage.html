@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+
+<body>
+    <h1 id="name"></h1>
+    <h1 id="age"></h1>
+</body>
+<script>
+    localStorage.setItem('name', 'webchang');
+    localStorage.setItem('age', 18);
+    let name = localStorage.getItem('name');
+    let age = localStorage.getItem('age');
+    document.getElementById('name').textContent = name;
+    document.getElementById('age').textContent = age;
+</script>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抽奖</title>
+    <link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/transform.js"></script>
+	<script type="text/javascript" src="js/tick.js"></script>
+	<script type="text/javascript" src="js/3d.js"></script>
+	<script type="text/javascript" src="js/lucky.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/raffle.js"></script>
+</head>
+<body>
+	<div>
+		<video id="video" loop class="none">
+			<source  src="style/bg3.mp4" style="width: 100%">
+		</video>
+		<div class="row action-outer">
+			<div class="col-md-4 btns hidden-actions">
+				<div class="btn-group">
+					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="theme">
+						主题 <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#" onclick="changeBackground('bg1.png')">主题一</a></li>
+						<li><a href="#" onclick="changeBackground('bg2.png')">主题二</a></li>
+						<li><a href="#" onclick="changeBackground('bg3.png')">主题三</a></li>
+					</ul>
+				</div>
+				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addPerson" style="outline: none">添加人员</button>
+			</div>
+		</div>
+		<div class="row box">
+			<div class="col-md-4" >
+				<div class="lucky_list">
+					<div class="lucky_people_list">
+						<div class="lucky_people_title">中奖名单</div>
+						<div class="lpl_list active" style="display: block;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 show-outer">
+				<div class="mask" style="display: none;"></div>
+				<div class="btn_outer" id="open">
+					<div  class="btn_circle">开始</div>
+				</div>
+				<div class="btn_outer btn_stop"id="stop" style="display: none">
+					<div class="btn_circle" >停止</div>
+				</div>
+				<div class="container"></div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="addPerson">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" style="display: inline-block">增加人员</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<label for="name">姓名：</label>
+							<input class="form-control" id="name" placeholder="Enter name">
+						</div>
+						<div class="form-group">
+							<label for="phone">电话：</label>
+							<input class="form-control" id="phone" placeholder="Enter phone">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="addPersonToArr()">增加</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	$(function() {
+		$(".action-outer").mouseover(function (){
+			$(".btns").removeClass("hidden-actions");
+			$(".btns").addClass("show-actions");
+		});
+		$(".action-outer").mouseout(function (){
+			if($('#theme').attr('aria-expanded') == "false"){
+				$(".btns").removeClass("show-actions");
+				$(".btns").addClass("hidden-actions");
+			}
+		});
+	})
+</script>
+</html>

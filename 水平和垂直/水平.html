@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        background-color: blueviolet;
+        text-align: center;
+    }
+    span {
+        display: block;
+        background-color: brown;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+    /* .main {
+        position: relative;
+    }
+    .main .box2 {
+        position: absolute;
+        background-color: burlywood;
+        width: 100px;
+        height: 100px;
+        margin-left: -50px;
+    } */
+    .box3 {
+        display: table;
+        margin: auto;
+        background-color: chartreuse;
+    }
+    /* .box4 {
+        display: inline-block;
+        background-color: coral;
+        text-align: center;
+    } */
+    .box5 {
+        display: flex;
+        justify-content: center;
+        background-color: cornflowerblue;
+    }
+    .box6 {
+        position: absolute;
+        background-color: rgb(72, 71, 141);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+</style>
+<body>
+    <div>
+        <div class="box">1我是元素</div>
+        <span>确定宽高 我是块元素</span>
+        <!-- <div class="main">
+            <span class="box2">2确定宽高 我是块级元素</span>
+        </div> -->
+        <div class="box3">3不确定宽高 块级元素</div>
+        <!-- <div class="box4">4不确定宽高 块级元素</div> -->
+        <div class="box5">5不确定宽度 块级元素</div>
+        <div class="box6">6不确定宽度 块级元素</div>
+    </div>
+</body>
+</html>

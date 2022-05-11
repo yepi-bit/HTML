@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #daf;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="game" width="500" height="500"></canvas>
+
+</body>
+<script>
+    //创建球构造函数
+    function ball() {
+        this.r = this.rand(20);
+        this.x = this.r;
+        this.y = this.r;
+        this.speedX = this.rand(6);
+        this.speedY = this.rand(6);
+        this.width = 0;
+        this.height = 0;
+        this.canvas = {};
+        this.color = 'rgb(' + this.rand(255) + ',' + this.rand(255) + ',' + this.rand(255) + ')';
+        this.init();
+    }
+    //2.向原型链添加方法
+    ball.prototype = {
+        init: function () {
+            var game = document.getElementById('game');
+            this.canvas = game.getContext('2d');
+            this.width = game.width;
+            this.height = game.height;
+        },
+        rand: function (num) {
+            return Math.floor(Math.random() * num + 1);
+        },
+        play: function () {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x > this.width - this.r) {
+                this.speedX = -this.speedX;
+            }
+            if (this.x < this.r) {
+                this.speedX = Math.abs(this.speedX);
+            }
+            if (this.y > this.width - this.r) {
+                this.speedY = -this.speedY;
+            }
+            if (this.y < this.r) {
+                this.speedY = Math.abs(this.speedY);
+            }
+            this.canvas.beginPath();
+            this.canvas.fillStyle = this.color;
+            this.canvas.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+            this.canvas.fill();
+        }
+    };
+    //3.创建10个小球
+    var arr = [];
+    for (var i = 0; i < 10; i++) {
+        arr[i] = new ball();
+    }
+
+    //4.使用定时器,每个30ms刷新屏幕
+    setInterval(function () {
+        arr[0].canvas.clearRect(0, 0, 500, 500);
+        for (var i = 0; i < arr.length; i++) {
+            arr[i].play();
+        }
+    }, 20)
+</script>
+
+</html>

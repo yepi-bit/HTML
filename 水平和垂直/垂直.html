@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        background-color: darkkhaki;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+    }
+
+    .box2 {
+        display: flex;
+        width: 100px;
+        height: 100px;
+        background-color: darkmagenta;
+        align-items: center;
+    }
+
+    .box3 {
+        display: table-cell;
+        width: 100px;
+        height: 100px;
+        vertical-align: middle;
+        background-color: darkseagreen;
+    }
+
+    .box4 {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background-color: darkturquoise;
+    }
+
+    .box4 span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+</style>
+
+<body>
+    <div class="box">1我是元素</div>
+    <div class="box2">2我是元素</div>
+    <div class="box3">3我是元素</div>
+    <div class="box4">
+        <span>4我是元素</span>
+    </div>
+</body>
+
+</html>

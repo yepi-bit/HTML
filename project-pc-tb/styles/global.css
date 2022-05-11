@@ -1,0 +1,80 @@
+@cahrset "utf-8";
+.isIeShow{
+	display: none;
+}
+
+.isW3cShow{
+	display: block;
+}
+
+/* 定义几个全局的类 大家都能用到  */
+
+.fuild-container{
+	width: 100%;
+	height: auto;
+}
+
+.container{
+	width: 1200px;
+	height: auto;
+	margin: 0 auto;
+	/*overflow: hidden;*/
+}
+
+
+
+._9fb838{
+	color: #9fb838 !important;
+}
+
+._d75696{
+	color: #d75696 !important;
+}
+
+
+._2e9fdb{
+	color: #2e9fdb !important;
+}
+
+._fc4200{
+	color: #fc4200 !important;
+}
+
+.col-5{
+ 	width: calc((100% / 5) - 20px );
+ 	padding: 0 10px;
+ 	text-align: left;
+ 	height: 100%;
+}
+
+.col-4{
+ 	width: calc((100% / 4) - 20px );
+ 	padding: 0 10px;
+ 	text-align: left;
+ 	height: 100%;
+}
+
+.col-3{
+ 	width: calc((100% / 3) - 20px );
+	 padding: 0 10px;
+	 text-align: left;
+ 	height: 100%;
+}
+
+.col-2{
+ 	width: calc((100% / 2) - 20px );
+	 padding: 0 10px;
+	 text-align: left;
+	 height: 100%;
+}
+
+.col-1{
+ 	width: calc(100% - 20px );
+ 	 padding: 0 10px;
+ 	text-align: left;
+ 	height: 100%;
+}
+
+
+
+/* 定义几个全局的类 大家都能用到  */

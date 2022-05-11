@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+/* Media 适配  */
+
+@media screen and (max-width: 1200px) {
+  .container{
+		width: 1050px;
+	}
+	.nav-right .nav-item-hover ul.site-nav{
+		width: 1048px;
+		left: -962px;
+	}
+	.nav-right .nav-item-hover ul.site-nav>li{
+		width: calc((1048px / 4) - 1px);
+	}
+	.fuild-container-main .inner-right a{
+			 width: calc((100% / 4) - 20px);
+			 margin: 0 10px;
+	}
+	.hide{
+		display: none;
+	}
+	 .top-search-wapper .top-search .search-center input{
+	 	background: url(../images/search.png) no-repeat 6px 12px, 
+	 	url(../images/camera.png) no-repeat 325px 12px;
+	 }
+   .main .main-bottom .main-bottom-list li{
+   		width: calc((100% / 4) - 20px);
+   }
+
+   ul.bottom-loves-list li .loves-list-similar span{
+   	  padding: 10px 0px;
+   }
+}
+/*  IE 10 和  IE 11 的 兼容配置  */
+ @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        /* 在这儿写IE10+ 的css样式代码 */
+        ::-ms-clear{
+        	display: none;               
+        }
+        .isIeShow{
+        	display: block;
+        }
+        .isW3cShow{
+        	display: none;
+        }
+ }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        /* 两边定宽，中间自适用 */
+        body,html,.container{
+            height: 100%;
+            padding:0;
+            margin: 0;
+        }
+        .col{
+            float: left;   /* 三个col都设置float: left,为了把left和right定位到左右部分 */
+            position:relative;
+        }
+         /*父元素空出左右栏位子: 因为上一步中，左右栏定位成功了，但是中间栏的内容会被遮盖住*/
+        .container{
+            padding:0 200px 0 100px;
+        }
+        /*左边栏*/
+        .left{
+            left:-100px;
+            width: 100px;
+            height:100%;
+            margin-left: -100%;
+            background: #ff69b4;
+        }
+        /*中间栏*/
+        .main{
+            width:100%;
+            height: 100%;
+            background: #659;
+        }
+        /*右边栏*/
+        .right{
+            right:-200px;
+            width:200px;
+            height:100%;
+            margin-left: -200px;
+            background: #ff69b4;
+        }
+</style>
+<body>
+    <div class="container">
+        <div class="main col">Main</div>
+        <div class="left col">Left</div>
+        <div class="right col">Right</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>百度换肤</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #skin-photo {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            /*设置元素的堆叠顺序*/
+            z-index: 10;
+        }
+
+        #skin-photo ul {
+            overflow: hidden;
+            width: 1200px;
+            margin: 0 auto;
+            /*rgba() 函数使用红(R)、绿(G)、蓝(B)、透明度(A)的叠加来生成各式各样的颜色*/
+            /* background-color: rgba(255,255,255,.5); */
+        }
+
+        #skin-photo ul li {
+            float: left;
+            cursor: pointer;
+            height: 120px;
+            list-style: none;
+            margin: 0 30px 0 50px;
+        }
+
+        #skin-photo ul li img {
+            width: 180px;
+            height: 120px;
+        }
+
+        #skin {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/img/picture3.jpg");
+            background-position: center 0;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="skin"></div>
+    <div id="skin-photo">
+        <ul>
+            <li>
+                <img src="/img/picture1.jpg">
+            </li>
+            <li>
+                <img src="/img/picture2.jpg">
+            </li>
+            <li>
+                <img src="/img/picture3.jpg">
+            </li>
+            <li>
+                <img src="/img/picture4.jpg">
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        // 获取对应的图片
+        var skin = document.getElementById("skin");
+        var allItems = document.getElementsByTagName("li");
+        for (var i = 0; i < allItems.length; i++) {
+            // 需要设置一个变量，不然i在循环完毕后始终为3 达不到切换图片的效果
+            // 设置成i+1是因为图片名称是从1开始的
+            allItems[i].index = i + 1;
+            console.log(allItems[i].index)
+            allItems[i].onclick = function () {
+            skin.style.backgroundImage = `url("/img/picture${this.index}.jpg")`
+            }
+        }
+    </script>
+</body>
+
+</html>

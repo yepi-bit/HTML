@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const Util = {
+            // 我这里把 expires的单位当做毫秒
+            // localStorage.setItem() 方法用于存入数据 ，第一个是键名，第二个是保存的数据。
+            setData(key, value, expires) {
+                let obj = {
+                    value,
+                    time: Date.now(), // 保存当前的时间
+                    expires
+                };
+                localStorage.setItem(key, JSON.stringify(obj));
+            },
+            // localStorage.getItem() 方法用于读取数据，如果键名不存在，该方法返回 null。
+            getData(key) {
+                let val = localStorage.getItem(key);
+                console.log(val);
+                if (val === null) return null;
+
+                val = JSON.parse(val);
+                if (Date.now() - val.time > val.expires) {
+                    // 获取数据的时候判断一下是否过期，如果过期了，就把它清除
+                    localStorage.removeItem(key);
+                    return null;
+                }
+
+                return val.value;
+            }
+        };
+
+        
+        Util.setData('name', 'webchang', 2000);
+
+        // 存入后立即获取一次数据
+        console.log(Util.getData('name'));
+
+        // 5秒后再获取一次数据，此时数据已经过期了
+        setTimeout(() => {
+            console.log(Util.getData('name'));
+        }, 5000);
+
+    </script>
+</body>
+
+</html>

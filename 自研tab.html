@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .scroll {
+        height: 60px;
+        color: black;
+        width: 100%;
+        line-height: 60px;
+        z-index: 100;
+        position: relative;
+    }
+
+    .nav {
+        height: 100%;
+        display: inline-block;
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        line-height: 60px;
+    }
+
+    .nav::before {
+        display: table;
+        content: "";
+    }
+
+    .item {
+        margin: 0;
+        list-style: none;
+        position: relative;
+        cursor: pointer;
+    }
+    li {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+        padding: 0 10px;
+    }
+    a:hover {
+        font-size: 22px;
+    }
+
+    a:active {
+        color: #409eff;
+    }
+
+    a:active:after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        bottom: 7px;
+        left: calc(50% - 7px);
+        width: 14px;
+        height: 4px;
+        background: #409eff;
+    }
+    .label {
+        position: sticky;
+        left: 0;
+        top: 0;
+        float: right;
+        height: 40px;
+        margin-top: -76px;
+    }
+</style>
+
+<body>
+    <div class="scroll">
+        <ul class="nav">
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+            <li class="item">
+                <a href="#">哈哈</a>
+            </li>
+        </ul>
+        <img class="label" src="https://p5.ssl.qhimgs1.com/sdr/400__/t0167fcc723e83d34bf.jpg">
+    </div>
+</body>
+
+</html>

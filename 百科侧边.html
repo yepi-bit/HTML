@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #page-tool-part {
+        bottom: 300px;
+        position: fixed;
+        right: 50px;
+        width: 48px;
+        z-index: 10000;
+    }
+
+    #page-tool-part .scrolltop {
+        background-position: 0 0;
+        left: 10px;
+    }
+
+    #page-tool-part .scrolltop,
+    #page-tool-part .faceicon,
+    #page-tool-part .shareicon {
+        background-image: url(https://p.ssl.qhimg.com/t016ec9e59c24e15457.png);
+        cursor: pointer;
+        display: block;
+        height: 48px;
+        width: 48px;
+    }
+
+    .hideText,
+    .hideCon {
+        color: transparent;
+        font: 0/0 a;
+        /* text-shadow: none; */
+    }
+
+    a {
+        color: #136EC2;
+        text-decoration: none;
+    }
+
+    #page-tool-part .sharearea-wrap a,
+    #page-tool-part .sharearea-wrap a:hover {
+        color: #777;
+        text-decoration: none;
+    }
+
+    #page-tool-part .sharearea-wrap a {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        display: block;
+        height: 25px;
+        line-height: 25px;
+        padding-left: 8px;
+    }
+
+    #page-tool-part .sharearea-wrap i.qzone {
+        background-position: -89px -30px;
+    }
+
+    #page-tool-part .sharearea-wrap i {
+        background: url(https://p.ssl.qhimg.com/t01804da55c74e810ea.png) no-repeat;
+        display: inline-block;
+        height: 20px;
+        margin-right: 3px;
+        vertical-align: middle;
+        width: 20px;
+    }
+
+    i,
+    cite,
+    em,
+    var,
+    address,
+    dfn {
+        font-style: italic;
+    }
+
+    #page-tool-part .shareicon:hover {
+        background-position: -56px -167px;
+    }
+
+    #page-tool-part .shareicon {
+        background-position: 0 -167px;
+        left: 184px;
+    }
+
+    #page-tool-part .scrolltop:hover {
+        background-position: -56px 0;
+    }
+
+    #page-tool-part .faceicon:hover {
+        background-position: -56px -112px;
+    }
+
+    #page-tool-part .scrolltop {
+        background-position: 0 0;
+        left: 10px;
+    }
+
+
+    #page-tool-part .faceicon {
+        background-position: 0 -112px;
+        left: 98px;
+    }
+
+    a:hover {
+        color: #090;
+        text-decoration: underline;
+    }
+
+    #page-tool-part .sharearea-wrap a:hover {
+        background: #f3f3f3;
+        border-top: 1px solid #ececec;
+        border-bottom: 1px solid #ececec;
+    }
+
+    #page-tool-part .sharearea-wrap {
+        background: #fff;
+        border: 1px solid #c4c4c4;
+        box-shadow: 0 0 3px #ccc;
+        display: none;
+        height: 162px;
+        left: -90px;
+        position: absolute;
+        top: 96px;
+        width: 88px;
+    }
+</style>
+
+<body>
+    <div id="page-tool-part" style="visibility: visible;">
+        <a href="###" class="scrolltop hideText" data-log="back-top">回到顶部</a>
+        <a href="http://info.so.com/feedback_baike.html?type=wordcorrect&amp;eid=4479142&amp;sid=4688201&amp;entryname=Capture+One"
+            target="_blank" class="faceicon hideText" data-log="feedback">
+            意见反馈
+        </a>
+        <div class="shareicon" id="shareBtn"></div>
+
+        <div class="sharearea-wrap" id="shareBox" style="display: none;">
+            <a href="###" data-log="qq">
+                <i class="qzone"></i>
+                QQ空间
+            </a>
+            <a href="###" data-log="sina">
+                <i class="weibo"></i>
+                新浪微博
+            </a>
+            <a href="###" data-log="tencent">
+                <i class="tweibo"></i>
+                腾讯微博
+            </a>
+            <a href="###" data-log="baidu">
+                <i class="tieba"></i>
+                百度贴吧
+            </a>
+            <a href="###" data-log="renren">
+                <i class="renren"></i>
+                人人
+            </a>
+            <a href="###" data-log="douban">
+                <i class="douban"></i>
+                豆瓣
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

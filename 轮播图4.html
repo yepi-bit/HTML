@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .slider {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+        width: 60vw;
+        position: relative;
+      }
+
+      @media screen and (max-width: 900px) {
+        .slider {
+          width: 100vw;
+        }
+      }
+
+      .slider img {
+        display: none;
+        width: 100%;
+        border-radius: 4px;
+      }
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 30px;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 10px;
+        user-select: none;
+        transition: 0.6s ease;
+      }
+      .prev {
+        border-radius: 0 3px 3px 0;
+        left: 0;
+      }
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .nav {
+        position: absolute;
+        width: 12vmax;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: space-evenly;
+        bottom: 1vmin;
+      }
+      .dot {
+        list-style-type: none;
+        cursor: pointer;
+        background-color: #fff;
+        width: 1.5vmax;
+        height: 1.5vmax;
+        border-radius: 50%;
+        transition: background-color 0.6s ease;
+      }
+      .selected {
+        background-color: #ff5000;
+      }
+
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+</style>
+<body>
+    <div class="slider">
+        <img class="fade" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=275377869,874401419&fm=26&gp=0.jpg" alt="" />
+        <img class="fade" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=275377869,874401419&fm=26&gp=0.jpg" alt="" />
+        <img class="fade" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=275377869,874401419&fm=26&gp=0.jpg" alt="" />
+        <img class="fade" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=275377869,874401419&fm=26&gp=0.jpg" alt="" />
+  
+        <a class="prev" onclick="prev()">&lt;</a>
+        <a class="next" onclick="next()">&gt;</a>
+  
+        <ul class="nav">
+          <li class="dot selected" onclick="turnToSlide(0)"></li>
+          <li class="dot" onclick="turnToSlide(1)"></li>
+          <li class="dot" onclick="turnToSlide(2)"></li>
+          <li class="dot" onclick="turnToSlide(3)"></li>
+        </ul>
+  </div>
+</body>
+<script>
+      function Slider () {
+        let slideIndex = 0
+        let timer,
+          flag = 0
+
+        function deleteTimer () {
+          clearTimeout(timer)
+          timer = null
+        }
+
+        function next () {
+          slideIndex++
+          showSlide()
+        }
+
+        function turnToSlide (index) {
+          if (index === slideIndex) return
+          slideIndex = index
+          showSlide()
+        }
+        function prev () {
+          slideIndex--
+          showSlide()
+        }
+
+        function showSlide () {
+          deleteTimer()
+          const slides = document.querySelectorAll('img')
+          const dots = document.querySelectorAll('.dot')
+          if (slideIndex >= slides.length) {
+            slideIndex = 0
+          }
+          if (slideIndex < 0) {
+            slideIndex = slides.length - 1
+          }
+		  
+          slides[flag].style.display = 'none'
+          dots[flag].classList.remove('selected')
+
+          slides[slideIndex].style.display = 'block'
+          dots[slideIndex].classList.add('selected')
+
+          flag = slideIndex
+
+          timer = setTimeout(next, 5000)
+        }
+        return {
+          prev,
+          next,
+          showSlide,
+          turnToSlide
+        }
+      }
+      const slider = Slider()
+      slider.showSlide()
+
+</script>
+</html>

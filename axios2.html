@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>发送请求</button>
+    <button>取消请求</button>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script>
+        const btns = document.getElementsByTagName('button');
+        let cancel = null;
+
+        btns[0].addEventListener('click', function () {
+            // 多次点击可能会触发很多请求，需要检测上一次的请求是否完成，
+            // 如果上一次请求正在进行则取消上一次的请求，进行最近的请求
+            if (cancel) {
+                cancel();
+            }
+
+            axios({
+                url: 'http://localhost:3000/users',
+                method: 'get',
+                cancelToken: new axios.CancelToken(function (c) {
+                    cancel = c;
+                })
+            }).then(res => {
+                console.log(res);
+                cancel = null;
+            }).catch(err => {
+                if (axios.isCancel(err)) {
+                    console.log('取消了');
+                }
+                console.log('自定义失败回调', err);
+            })
+        });
+
+        btns[1].addEventListener('click', function () {
+            cancel();
+        })
+    </script>
+</body>
+
+</html>
